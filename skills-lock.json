@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "context-engineering": {
+      "source": "mrgoonie/claudekit-skills",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/context-engineering/SKILL.md",
+      "computedHash": "a849ecf329d6aa01df59aa886d62db4659e1c9102e6d0d8078363949f6a01eaf"
+    }
+  }
+}
