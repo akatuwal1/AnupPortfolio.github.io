@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Money Truth — TikTok Content Package</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black:      #080808;
+      --offblack:   #111111;
+      --panel:      #161616;
+      --border:     #1f1f1f;
+      --amber:      #D4872A;
+      --amber-dim:  #7a4e18;
+      --blue:       #00C2FF;
+      --blue-dim:   #004d66;
+      --white:      #F5F5F5;
+      --grey:       #666666;
+      --red:        #E63946;
+    }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
+      padding: 0;
+    }
+
+    /* ─── HERO ─────────────────────────────────────────── */
+    .hero {
+      width: 100%;
+      padding: 80px 40px 60px;
+      text-align: center;
+      background: linear-gradient(180deg, #0e0e0e 0%, var(--black) 100%);
+      border-bottom: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -60px; left: 50%; transform: translateX(-50%);
+      width: 600px; height: 300px;
+      background: radial-gradient(ellipse, rgba(0,194,255,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-eyebrow {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 20px;
+    }
+    .hero-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(48px, 8vw, 96px);
+      line-height: 0.95;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+    .hero-title span { color: var(--amber); }
+    .hero-sub {
+      font-size: 15px;
+      color: var(--grey);
+      margin-top: 16px;
+      letter-spacing: 0.05em;
+    }
+    .hero-tags {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 28px;
+    }
+    .tag {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 2px;
+      border: 1px solid;
+    }
+    .tag-blue  { border-color: var(--blue);  color: var(--blue); }
+    .tag-amber { border-color: var(--amber); color: var(--amber); }
+    .tag-grey  { border-color: var(--border); color: var(--grey); }
+
+    /* ─── LAYOUT ────────────────────────────────────────── */
+    .page { max-width: 1400px; margin: 0 auto; padding: 60px 32px; }
+
+    .section-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ─── PHONE MOCKUP ──────────────────────────────────── */
+    .tiktok-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 16px;
+      margin-bottom: 60px;
+    }
+
+    .phone-frame {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 9/16;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    /* Shot-specific backgrounds */
+    .shot-1 { background: #000000; }
+    .shot-2 { background: radial-gradient(ellipse at 30% 50%, #1a0f05 0%, #080808 70%); }
+    .shot-3 { background: linear-gradient(160deg, #0a0d10 0%, #060608 100%); }
+    .shot-4 { background: linear-gradient(180deg, #0e0a05 0%, #080808 100%); }
+    .shot-5 { background: linear-gradient(160deg, #000d14 0%, #080808 100%); }
+    .shot-6 { background: #000000; }
+    .shot-7 { background: linear-gradient(180deg, #0a0505 0%, #080808 100%); }
+    .shot-8 { background: radial-gradient(ellipse at 70% 40%, #0d0d0d 0%, #080808 70%); }
+
+    .shot-number {
+      position: absolute;
+      top: 10px;
+      left: 12px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      color: var(--grey);
+    }
+    .shot-time {
+      position: absolute;
+      top: 10px;
+      right: 12px;
+      font-size: 10px;
+      color: var(--grey);
+    }
+
+    .shot-content {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px 14px;
+      position: relative;
+    }
+
+    /* Hook text — shot 1 */
+    .hook-text {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(22px, 5vw, 38px);
+      line-height: 1.05;
+      text-align: center;
+      color: #ffffff;
+      letter-spacing: 0.02em;
+    }
+    .hook-text em { color: var(--amber); font-style: normal; }
+
+    /* Amber light overlay for shot-2 */
+    .amber-light {
+      position: absolute;
+      top: 0; left: 0;
+      width: 40%;
+      height: 100%;
+      background: linear-gradient(90deg, rgba(212,135,42,0.10) 0%, transparent 100%);
+      pointer-events: none;
+    }
+    .face-placeholder {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #2a1a0a, #1a1a1a);
+      border: 1px solid var(--amber-dim);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      margin-bottom: 16px;
+    }
+
+    /* Stats overlay */
+    .stat-line {
+      font-family: 'Inter', sans-serif;
+      font-weight: 900;
+      font-size: clamp(11px, 2.5vw, 18px);
+      color: var(--white);
+      text-align: center;
+      line-height: 1.6;
+    }
+    .stat-line .num { color: var(--amber); font-size: 1.4em; }
+    .stat-line .note { color: var(--grey); font-size: 0.8em; font-weight: 500; }
+
+    /* Counter shot */
+    .counter-box {
+      background: rgba(0,0,0,0.5);
+      border: 1px solid var(--blue-dim);
+      border-radius: 4px;
+      padding: 14px 20px;
+      text-align: center;
+      width: 90%;
+    }
+    .counter-label {
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 6px;
+    }
+    .counter-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 52px;
+      color: var(--white);
+      line-height: 1;
+    }
+    .counter-num span { color: var(--red); }
+    .counter-items { margin-top: 10px; }
+    .counter-item {
+      display: flex;
+      justify-content: space-between;
+      font-size: 9px;
+      color: var(--grey);
+      padding: 2px 0;
+      border-top: 1px solid var(--border);
+    }
+    .counter-item .val { color: var(--amber); font-weight: 700; }
+
+    /* Wallet shot */
+    .wallet-icon {
+      font-size: 40px;
+      margin-bottom: 10px;
+      filter: grayscale(0.3);
+    }
+    .wallet-text {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(14px, 3vw, 22px);
+      text-align: center;
+      color: var(--grey);
+      line-height: 1.2;
+    }
+    .wallet-text strong { color: var(--white); display: block; font-size: 1.3em; }
+
+    /* Caption overlay (bottom third) */
+    .caption-bar {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      background: linear-gradient(0deg, rgba(0,0,0,0.95) 0%, transparent 100%);
+      padding: 24px 12px 14px;
+    }
+    .caption-text {
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(8px, 1.8vw, 12px);
+      font-weight: 700;
+      color: var(--white);
+      text-align: center;
+      line-height: 1.4;
+      text-shadow: 0 1px 4px rgba(0,0,0,0.8);
+    }
+
+    /* Blue rim light effect */
+    .blue-rim {
+      position: absolute;
+      top: 0; right: 0;
+      width: 6px;
+      height: 100%;
+      background: linear-gradient(180deg, transparent 0%, var(--blue) 40%, var(--blue) 60%, transparent 100%);
+      opacity: 0.5;
+    }
+
+    /* Shot description cards */
+    .shot-desc-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 12px;
+      margin-bottom: 60px;
+    }
+    .shot-desc-card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 20px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .shot-num-badge {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 32px;
+      color: var(--border);
+      line-height: 1;
+      flex-shrink: 0;
+      width: 32px;
+    }
+    .shot-desc-card h4 { font-size: 13px; font-weight: 700; color: var(--white); margin-bottom: 6px; }
+    .shot-desc-card p  { font-size: 12px; color: var(--grey); line-height: 1.6; }
+    .shot-desc-card .timing {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--amber);
+      letter-spacing: 0.1em;
+      margin-top: 8px;
+    }
+
+    /* ─── SCRIPT SECTION ────────────────────────────────── */
+    .script-block {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 60px;
+    }
+    .script-row {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      border-bottom: 1px solid var(--border);
+    }
+    .script-row:last-child { border-bottom: none; }
+    .script-label {
+      padding: 20px 16px;
+      background: var(--offblack);
+      border-right: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .script-label .phase {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--blue);
+    }
+    .script-label .timecode {
+      font-size: 11px;
+      color: var(--grey);
+      font-family: monospace;
+    }
+    .script-body {
+      padding: 20px;
+      font-size: 14px;
+      line-height: 1.8;
+      color: var(--white);
+    }
+    .script-body .nepali { color: var(--amber); font-style: italic; }
+    .script-body .emphasis { color: var(--blue); font-weight: 700; }
+    .script-body .stat-callout {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 20px;
+      color: var(--red);
+      display: block;
+      margin: 4px 0;
+    }
+
+    /* ─── CAPTION SECTION ───────────────────────────────── */
+    .caption-box {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 28px;
+      margin-bottom: 24px;
+    }
+    .caption-box h3 {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 16px;
+    }
+    .caption-main {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+    .hashtag-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .hashtag {
+      font-size: 12px;
+      color: var(--blue);
+      background: rgba(0, 194, 255, 0.05);
+      border: 1px solid var(--blue-dim);
+      padding: 4px 10px;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .hashtag:hover { background: rgba(0, 194, 255, 0.12); }
+    .hashtag.high { color: var(--white); border-color: var(--border); background: var(--offblack); }
+    .hashtag.nepali { color: var(--amber); border-color: var(--amber-dim); background: rgba(212,135,42,0.05); }
+
+    /* ─── ENGAGEMENT SECTION ────────────────────────────── */
+    .engage-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 16px;
+      margin-bottom: 60px;
+    }
+    .engage-card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 24px;
+    }
+    .engage-card .icon { font-size: 24px; margin-bottom: 12px; }
+    .engage-card h4 {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 10px;
+    }
+    .engage-card p { font-size: 14px; color: var(--white); line-height: 1.6; }
+    .engage-card .sub { font-size: 12px; color: var(--grey); margin-top: 8px; }
+
+    /* ─── AUDIO SECTION ─────────────────────────────────── */
+    .audio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 16px;
+      margin-bottom: 60px;
+    }
+    .audio-card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 20px;
+    }
+    .audio-card h4 {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 10px;
+    }
+    .audio-card p { font-size: 13px; color: var(--white); line-height: 1.6; }
+    .audio-card .note { font-size: 11px; color: var(--grey); margin-top: 8px; }
+
+    /* ─── COLOR PALETTE ─────────────────────────────────── */
+    .palette {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 60px;
+    }
+    .swatch {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+    .swatch-color {
+      width: 64px;
+      height: 64px;
+      border-radius: 4px;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .swatch-name { font-size: 11px; color: var(--grey); text-align: center; }
+    .swatch-hex  { font-size: 10px; color: var(--border); font-family: monospace; }
+
+    /* ─── TYPOGRAPHY DEMO ───────────────────────────────── */
+    .type-demo {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 32px;
+      margin-bottom: 60px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .type-row { display: flex; align-items: baseline; gap: 24px; flex-wrap: wrap; }
+    .type-spec { font-size: 11px; color: var(--grey); min-width: 120px; }
+    .type-sample-bebas { font-family: 'Bebas Neue', sans-serif; }
+    .type-sample-inter { font-family: 'Inter', sans-serif; }
+
+    /* ─── PILLAR TRACKER ────────────────────────────────── */
+    .pillar-track {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      margin-bottom: 60px;
+    }
+    .pillar-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 14px 20px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      font-size: 13px;
+      color: var(--grey);
+    }
+    .pillar-row.done   { border-left: 3px solid var(--amber); color: var(--white); }
+    .pillar-row.next   { border-left: 3px solid var(--blue); color: var(--blue); }
+    .pillar-row.queued { border-left: 3px solid var(--border); }
+    .pillar-dot { font-size: 16px; flex-shrink: 0; }
+
+    /* ─── FOOTER ────────────────────────────────────────── */
+    .footer {
+      border-top: 1px solid var(--border);
+      padding: 32px;
+      text-align: center;
+      font-size: 11px;
+      color: var(--grey);
+      letter-spacing: 0.08em;
+    }
+
+    /* ─── COPY BUTTON ───────────────────────────────────── */
+    .copy-btn {
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--grey);
+      font-size: 11px;
+      padding: 6px 14px;
+      border-radius: 2px;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      margin-top: 16px;
+      transition: all 0.15s;
+    }
+    .copy-btn:hover { border-color: var(--blue); color: var(--blue); }
+
+    @media (max-width: 640px) {
+      .hero { padding: 50px 20px 40px; }
+      .page { padding: 40px 16px; }
+      .script-row { grid-template-columns: 1fr; }
+      .script-label { border-right: none; border-bottom: 1px solid var(--border); }
+      .tiktok-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ─── HERO ─────────────────────────────────────────────── -->
+<header class="hero">
+  <p class="hero-eyebrow">TikTok Content Package · June 14, 2026</p>
+  <h1 class="hero-title">THE <span>MONEY</span><br>TRUTH</h1>
+  <p class="hero-sub">Unsponsored Bodybuilding in Nepal — What It Actually Costs</p>
+  <div class="hero-tags">
+    <span class="tag tag-amber">[NUTRITION]</span>
+    <span class="tag tag-blue">[SUPPLEMENT-TRUTH]</span>
+    <span class="tag tag-grey">13 WEEKS OUT · MR. KATHMANDU</span>
+    <span class="tag tag-grey">45–55 SEC</span>
+  </div>
+</header>
+
+<main class="page">
+
+  <!-- ─── STORYBOARD ──────────────────────────────────────── -->
+  <p class="section-label">01 · Storyboard — 8 Shots</p>
+  <div class="tiktok-grid">
+
+    <!-- Shot 1: Hook -->
+    <div class="phone-frame shot-1">
+      <span class="shot-number">01</span>
+      <span class="shot-time">0:00–0:04</span>
+      <div class="shot-content" style="justify-content:center;">
+        <p class="hook-text">BODYBUILDING<br>IS A<br><em>RICH MAN'S</em><br>SPORT.</p>
+      </div>
+    </div>
+
+    <!-- Shot 2: Face -->
+    <div class="phone-frame shot-2">
+      <span class="shot-number">02</span>
+      <span class="shot-time">0:04–0:08</span>
+      <div class="amber-light"></div>
+      <div class="shot-content">
+        <div class="face-placeholder">🧍</div>
+        <div class="caption-bar">
+          <p class="caption-text">"No sponsor. No free tubs.<br>Just me."</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Shot 3: Chicken on scale -->
+    <div class="phone-frame shot-3">
+      <span class="shot-number">03</span>
+      <span class="shot-time">0:08–0:14</span>
+      <div class="shot-content">
+        <div class="stat-line">
+          🍗 CHICKEN<br>
+          <span class="num">400g</span><br>
+          <span class="note">every day</span>
+        </div>
+        <div class="caption-bar">
+          <p class="caption-text">NPR 6,500 / month<br><span style="color:var(--amber)">just chicken</span></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Shot 4: Eggs -->
+    <div class="phone-frame shot-4">
+      <span class="shot-number">04</span>
+      <span class="shot-time">0:14–0:18</span>
+      <div class="shot-content">
+        <div class="stat-line">
+          🥚 EGGS<br>
+          <span class="num">8</span><br>
+          <span class="note">per day</span>
+        </div>
+        <div class="caption-bar">
+          <p class="caption-text">NPR 5,000 / month<br><span style="color:var(--grey)">+ rice, sabji, oats → 4,000 more</span></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Shot 5: Supplement tubs with blue rim -->
+    <div class="phone-frame shot-5">
+      <span class="shot-number">05</span>
+      <span class="shot-time">0:18–0:28</span>
+      <div class="blue-rim"></div>
+      <div class="shot-content">
+        <div class="stat-line">
+          <span style="font-size:1.6em">🧴🧴🧴</span><br><br>
+          WHEY &nbsp;<span class="num" style="font-size:1em">12K</span><br>
+          CREATINE &nbsp;<span class="num" style="font-size:1em">3K</span><br>
+          PRE &nbsp;<span class="num" style="font-size:1em">4K</span><br>
+          OMEGA &nbsp;<span class="num" style="font-size:1em">2.5K</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Shot 6: Running counter -->
+    <div class="phone-frame shot-6">
+      <span class="shot-number">06</span>
+      <span class="shot-time">0:28–0:36</span>
+      <div class="shot-content">
+        <div class="counter-box">
+          <p class="counter-label">Monthly Total — NPR</p>
+          <p class="counter-num"><span>30,000</span></p>
+          <div class="counter-items">
+            <div class="counter-item"><span>Food only</span><span class="val">15,000</span></div>
+            <div class="counter-item"><span>Supplements</span><span class="val">21,500</span></div>
+            <div class="counter-item" style="color:#fff; border-color:#333;"><span>TOTAL</span><span class="val" style="color:var(--red)">30,000+</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Shot 7: Wallet / reality -->
+    <div class="phone-frame shot-7">
+      <span class="shot-number">07</span>
+      <span class="shot-time">0:36–0:46</span>
+      <div class="shot-content">
+        <div class="wallet-icon">💸</div>
+        <p class="wallet-text">
+          <strong>Someone's full salary.</strong>
+          Spent every month.<br>To stand on stage<br>for 5 minutes.
+        </p>
+      </div>
+    </div>
+
+    <!-- Shot 8: CTA close -->
+    <div class="phone-frame shot-2" style="background: radial-gradient(ellipse at 70% 40%, #0d1014 0%, #080808 70%);">
+      <span class="shot-number">08</span>
+      <span class="shot-time">0:46–0:55</span>
+      <div class="blue-rim"></div>
+      <div class="shot-content">
+        <div class="face-placeholder" style="border-color: var(--blue-dim);">🧍</div>
+        <div class="caption-bar">
+          <p class="caption-text" style="color:var(--blue)">FOLLOW — Part 2:<br>Full stack under NPR 10,000/mo</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ─── SHOT LIST ────────────────────────────────────────── -->
+  <p class="section-label">02 · Shot Breakdown</p>
+  <div class="shot-desc-grid" style="margin-bottom:60px;">
+    <div class="shot-desc-card">
+      <span class="shot-num-badge">01</span>
+      <div>
+        <h4>Hook — Black screen, text only</h4>
+        <p>Pure black background. "BODYBUILDING IS A RICH MAN'S SPORT." in Bebas Neue, white, centered. Hold 2 sec. No face yet — let the claim land alone.</p>
+        <p class="timing">0:00 – 0:04 · Hard cut to Shot 2</p>
+      </div>
+    </div>
+    <div class="shot-desc-card">
+      <span class="shot-num-badge">02</span>
+      <div>
+        <h4>Face — Direct, no expression</h4>
+        <p>Single amber key light from 45°. Deep shadow on off-side. No ring light. Post-training look — not styled. Phone on tripod, eye level. Flat affect.</p>
+        <p class="timing">0:04 – 0:08 · Hard cut</p>
+      </div>
+    </div>
+    <div class="shot-desc-card">
+      <span class="shot-num-badge">03</span>
+      <div>
+        <h4>Chicken on food scale</h4>
+        <p>Top-down (overhead). Scale reading visible — must show 400g. Cool white LED light. Clinical. No garnish, no styling. Real food, real numbers.</p>
+        <p class="timing">0:08 – 0:14 · Hard cut</p>
+      </div>
+    </div>
+    <div class="shot-desc-card">
+      <span class="shot-num-badge">04</span>
+      <div>
+        <h4>Eggs / grocery bag</h4>
+        <p>Hand grabbing egg tray. Warm amber light (replicate with a lamp). Slightly handheld — raw feel acceptable. Not polished.</p>
+        <p class="timing">0:14 – 0:18 · Hard cut</p>
+      </div>
+    </div>
+    <div class="shot-desc-card">
+      <span class="shot-num-badge">05</span>
+      <div>
+        <h4>Supplement tubs lined up — slow pan</h4>
+        <p>4–5 tubs in a row. Electric blue LED strip behind tubs as rim light (cheap RGB strip works). Slow left-to-right pan. Each tub = one item mentioned in VO.</p>
+        <p class="timing">0:18 – 0:28 · Hard cut</p>
+      </div>
+    </div>
+    <div class="shot-desc-card">
+      <span class="shot-num-badge">06</span>
+      <div>
+        <h4>Running total counter — screen record or text edit</h4>
+        <p>Numbers climbing 15K → 30K, synced to the beat. Film your phone screen showing a notes app / calculator OR edit in CapCut counter animation. This is THE moment — music hit lands here.</p>
+        <p class="timing">0:28 – 0:36 · Hard cut</p>
+      </div>
+    </div>
+    <div class="shot-desc-card">
+      <span class="shot-num-badge">07</span>
+      <div>
+        <h4>Wallet — underexposed, moody</h4>
+        <p>Open wallet, near-empty or money being counted out. Underexposed — let it feel bleak. Warm, slightly red-orange light. No dialogue here, VO carries it.</p>
+        <p class="timing">0:36 – 0:46 · Hard cut</p>
+      </div>
+    </div>
+    <div class="shot-desc-card">
+      <span class="shot-num-badge">08</span>
+      <div>
+        <h4>Face — CTA close, direct eye contact</h4>
+        <p>Single key light only. Blue rim from behind if possible. Hold for 4–5 seconds of silent eye contact after CTA line. Fade to black. No outro music swell.</p>
+        <p class="timing">0:46 – 0:55 · Fade to black</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── SCRIPT ───────────────────────────────────────────── -->
+  <p class="section-label">03 · Full Script — Spoken + Caption Overlays</p>
+  <div class="script-block">
+    <div class="script-row">
+      <div class="script-label">
+        <span class="phase">Hook</span>
+        <span class="timecode">0:00–0:04</span>
+      </div>
+      <div class="script-body">
+        <em style="color:var(--grey);font-size:12px;">[Screen text only — no VO yet]</em><br>
+        <strong>ON SCREEN:</strong> BODYBUILDING IS A RICH MAN'S SPORT.<br><br>
+        <em style="color:var(--grey);font-size:12px;">[Cut to face]</em><br>
+        "Nobody told me this sport would quietly drain my bank account. No sponsor? Let me show you the real number."
+      </div>
+    </div>
+    <div class="script-row">
+      <div class="script-label">
+        <span class="phase">Tension</span>
+        <span class="timecode">0:04–0:18</span>
+      </div>
+      <div class="script-body">
+        <span class="nepali">Yo mero actual monthly kharcha ho</span> — watch.<br><br>
+        Chicken, 400 grams <span class="nepali">a din</span> — that's NPR 6,500 a month. Just chicken.<br>
+        Eggs, 8 daily — another 5,000.<br>
+        Rice, <span class="nepali">sabji</span>, oats — 4,000 more.<br><br>
+        <span class="emphasis">We're at 15,000 and I haven't touched a single supplement.</span>
+      </div>
+    </div>
+    <div class="script-row">
+      <div class="script-label">
+        <span class="phase">Data Drop</span>
+        <span class="timecode">0:18–0:40</span>
+      </div>
+      <div class="script-body">
+        Now the supps.<br><br>
+        Whey, dosed properly — 8 to 12 thousand a month.<br>
+        Creatine — 3,000. Pre-workout — 4,000. Omega, multivitamin — 2,500.<br><br>
+        <span class="nepali">Bhai...</span>
+        <span class="stat-callout">WE'RE AT NPR 30,000 A MONTH.</span>
+        On food <span class="nepali">ra</span> powder.<br><br>
+        That's someone's full salary in this country. Spent to look good in a swimsuit for 5 minutes on stage.<br><br>
+        <em style="color:var(--grey);">[beat — silence]</em><br>
+        <span class="nepali">Koi sponsor chaina.</span> Just my job and a lot of sacrifice.
+      </div>
+    </div>
+    <div class="script-row">
+      <div class="script-label">
+        <span class="phase">Real Talk</span>
+        <span class="timecode">0:40–0:52</span>
+      </div>
+      <div class="script-body">
+        So what do you actually do?<br><br>
+        Cut the garbage — BCAAs, test boosters, fancy pre. <span class="nepali">Marketing ho, paisa kher.</span><br>
+        Keep what's proven: protein <span class="nepali">ra</span> creatine. <span class="nepali">Bas.</span><br><br>
+        Build the diet around eggs and local food first. Supplements <span class="nepali">aaakhir ma.</span><br>
+        <span class="nepali">Dal bhat</span> with enough chicken beats any imported tub.
+      </div>
+    </div>
+    <div class="script-row">
+      <div class="script-label">
+        <span class="phase">CTA</span>
+        <span class="timecode">0:52–0:55</span>
+      </div>
+      <div class="script-body">
+        Next video — the full stack under 10,000 a month. <span class="nepali">Follow, miss nagara.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── AUDIO ────────────────────────────────────────────── -->
+  <p class="section-label">04 · Audio Direction</p>
+  <div class="audio-grid">
+    <div class="audio-card">
+      <h4>Mood</h4>
+      <p>Dark trap / cinematic. Minimal 808s, minor-key piano. Build slow under the data section — one hard hit at the "30,000" moment.</p>
+    </div>
+    <div class="audio-card">
+      <h4>TikTok Search</h4>
+      <p>Search: <strong>"dark money beat"</strong> / <strong>"villain instrumental"</strong> / <strong>"sad gym music"</strong></p>
+      <p class="note">Verify trend status before posting. Avoid overly mainstream audio — niche trending sounds boost discoverability more.</p>
+    </div>
+    <div class="audio-card">
+      <h4>Royalty-Free Fallback</h4>
+      <p>Sickick-style moody production. Travis Scott stripped instrumental. Minor key, slow BPM (70–85), minimal elements.</p>
+    </div>
+    <div class="audio-card">
+      <h4>VO Pacing</h4>
+      <p><strong>Hook:</strong> Slow, let silence breathe.<br><strong>Numbers:</strong> Fast, clipped, punchy.<br><strong>"30,000":</strong> Pause before. Say it slow.<br><strong>Real Talk:</strong> Measured. Not rushed.<br><strong>CTA:</strong> Flat and direct.</p>
+    </div>
+  </div>
+
+  <!-- ─── CAPTION ──────────────────────────────────────────── -->
+  <p class="section-label">05 · Caption + Hashtags</p>
+  <div class="caption-box">
+    <h3>Caption — Copy & Paste Ready</h3>
+    <p class="caption-main">
+      NPR 30,000 a month. No sponsor. This is what nobody shows you about prep in Nepal.<br>
+      Part 2 = the budget stack under 10K. Follow so you don't miss it 👇
+    </p>
+    <button class="copy-btn" onclick="navigator.clipboard.writeText('NPR 30,000 a month. No sponsor. This is what nobody shows you about prep in Nepal.\nPart 2 = the budget stack under 10K. Follow so you don\'t miss it 👇')">Copy Caption</button>
+  </div>
+  <div class="caption-box">
+    <h3>Hashtags — 20 Tags, Mixed Strategy</h3>
+    <div class="hashtag-cloud">
+      <span class="hashtag high">#Bodybuilding</span>
+      <span class="hashtag high">#GymMotivation</span>
+      <span class="hashtag high">#FitnessJourney</span>
+      <span class="hashtag high">#NaturalBodybuilding</span>
+      <span class="hashtag">#SupplementTruth</span>
+      <span class="hashtag">#NepalFitness</span>
+      <span class="hashtag">#NepaliBodybuilder</span>
+      <span class="hashtag">#GymNepal</span>
+      <span class="hashtag">#MrKathmandu</span>
+      <span class="hashtag">#ContestPrep</span>
+      <span class="hashtag">#BudgetFitness</span>
+      <span class="hashtag">#WheyProtein</span>
+      <span class="hashtag">#GymReality</span>
+      <span class="hashtag">#FitnessOnABudget</span>
+      <span class="hashtag">#SouthAsianFitness</span>
+      <span class="hashtag">#Kathmandu</span>
+      <span class="hashtag nepali">#नेपाल_फिटनेस</span>
+      <span class="hashtag nepali">#बडीबिल्डिंग_नेपाल</span>
+      <span class="hashtag nepali">#जिम_नेपाल</span>
+      <span class="hashtag nepali">#DalBhatPower</span>
+    </div>
+    <button class="copy-btn" onclick="navigator.clipboard.writeText('#Bodybuilding #GymMotivation #FitnessJourney #NaturalBodybuilding #SupplementTruth #NepalFitness #NepaliBodybuilder #GymNepal #MrKathmandu #ContestPrep #BudgetFitness #WheyProtein #GymReality #FitnessOnABudget #SouthAsianFitness #Kathmandu #नेपाल_फिटनेस #बडीबिल्डिंग_नेपाल #जिम_नेपाल #DalBhatPower')">Copy All Hashtags</button>
+  </div>
+
+  <!-- ─── ENGAGEMENT ────────────────────────────────────────── -->
+  <p class="section-label">06 · Engagement Hooks</p>
+  <div class="engage-grid">
+    <div class="engage-card">
+      <div class="icon">💬</div>
+      <h4>Pin This Comment</h4>
+      <p>"Tapaiko monthly supplement kharcha kati cha? Drop the number 👇 — be honest."</p>
+      <p class="sub">Post this as your first comment and pin it. Numbers drive replies.</p>
+    </div>
+    <div class="engage-card">
+      <div class="icon">🔥</div>
+      <h4>Controversy Angle</h4>
+      <p>"90% of supplements Nepali gym-goers buy are a complete waste of money."</p>
+      <p class="sub">Reply to your own pinned comment with this. Splits the comment section. Both sides engage.</p>
+    </div>
+    <div class="engage-card">
+      <div class="icon">↗️</div>
+      <h4>Stitch / Duet Prompt</h4>
+      <p>"Stitch this with your real monthly gym budget. Let's expose the actual number."</p>
+      <p class="sub">Add to caption or second comment. Invites creators to respond without being cringey.</p>
+    </div>
+  </div>
+
+  <!-- ─── COLOR PALETTE ────────────────────────────────────── -->
+  <p class="section-label">07 · Color Palette</p>
+  <div class="palette" style="margin-bottom:60px;">
+    <div class="swatch">
+      <div class="swatch-color" style="background:#080808;"></div>
+      <p class="swatch-name">Primary Black</p>
+      <p class="swatch-hex">#080808</p>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:#161616;"></div>
+      <p class="swatch-name">Panel</p>
+      <p class="swatch-hex">#161616</p>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:#D4872A;"></div>
+      <p class="swatch-name">Amber</p>
+      <p class="swatch-hex">#D4872A</p>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:#00C2FF;"></div>
+      <p class="swatch-name">Electric Blue</p>
+      <p class="swatch-hex">#00C2FF</p>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:#E63946;"></div>
+      <p class="swatch-name">Alert Red</p>
+      <p class="swatch-hex">#E63946</p>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:#F5F5F5;"></div>
+      <p class="swatch-name">White</p>
+      <p class="swatch-hex">#F5F5F5</p>
+    </div>
+  </div>
+
+  <!-- ─── TYPOGRAPHY ───────────────────────────────────────── -->
+  <p class="section-label">08 · Typography</p>
+  <div class="type-demo">
+    <div class="type-row">
+      <span class="type-spec">Bebas Neue · 72px<br>Hook / Impact</span>
+      <span class="type-sample-bebas" style="font-size:clamp(36px,6vw,72px); color:var(--white); line-height:1;">THE MONEY TRUTH</span>
+    </div>
+    <div class="type-row">
+      <span class="type-spec">Bebas Neue · 32px<br>Stats / Numbers</span>
+      <span class="type-sample-bebas" style="font-size:clamp(22px,4vw,36px); color:var(--amber);">NPR 30,000 / MONTH</span>
+    </div>
+    <div class="type-row">
+      <span class="type-spec">Inter 700 · 14px<br>Caption overlay</span>
+      <span class="type-sample-inter" style="font-size:14px; font-weight:700; color:var(--white);">No sponsor. No free tubs. Just the real numbers.</span>
+    </div>
+    <div class="type-row">
+      <span class="type-spec">Inter 500 · 12px<br>Supporting text</span>
+      <span class="type-sample-inter" style="font-size:12px; font-weight:500; color:var(--grey);">Dal bhat with enough chicken beats any imported tub.</span>
+    </div>
+  </div>
+
+  <!-- ─── PILLAR TRACKER ───────────────────────────────────── -->
+  <p class="section-label">09 · Topic Pillar Tracker</p>
+  <div class="pillar-track">
+    <div class="pillar-row done">
+      <span class="pillar-dot">✓</span>
+      <span><strong>#1 — Contest Prep Reality</strong> · Used Jun 14</span>
+    </div>
+    <div class="pillar-row done">
+      <span class="pillar-dot">✓</span>
+      <span><strong>#2 + #5 — Nutrition / Supplement Truth (Financial Reality)</strong> · Used Jun 14</span>
+    </div>
+    <div class="pillar-row next">
+      <span class="pillar-dot">→</span>
+      <span><strong>#3 — Training Technique Breakdowns</strong> · NEXT</span>
+    </div>
+    <div class="pillar-row queued">
+      <span class="pillar-dot">·</span>
+      <span>#4 — Mindset / Discipline</span>
+    </div>
+    <div class="pillar-row queued">
+      <span class="pillar-dot">·</span>
+      <span>#6 — Body Transformation Data</span>
+    </div>
+    <div class="pillar-row queued">
+      <span class="pillar-dot">·</span>
+      <span>#7 — Recovery and Sleep Science</span>
+    </div>
+    <div class="pillar-row queued">
+      <span class="pillar-dot">·</span>
+      <span>#8 — Steroid / PED Education</span>
+    </div>
+  </div>
+
+</main>
+
+<footer class="footer">
+  MR. KATHMANDU — 13 WEEKS OUT · Content Package by Claude · katuwalanup@gmail.com
+</footer>
+
+</body>
+</html>
