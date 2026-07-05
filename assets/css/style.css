@@ -1,0 +1,377 @@
+/* Anup Katuwal — evidence-first analytical portfolio
+   Design tokens first; everything below is written against them. */
+
+@font-face {
+	font-family: "Fraunces";
+	font-style: normal;
+	font-weight: 600;
+	font-display: swap;
+	src: url("../fonts/fraunces-latin-600-normal.woff2") format("woff2");
+}
+
+:root {
+	/* surfaces */
+	--bg: #0e0d0b;
+	--surface: #16130f;
+	--surface-2: #1c1813;
+	/* ink */
+	--ink: #ece7dc;
+	--ink-2: #b8b1a2;
+	--muted: #8f887a;
+	/* accent: desaturated amber — reads "chart", not "SaaS" */
+	--accent: #d9a94e;       /* UI/text accent */
+	--accent-mark: #b98936;  /* chart marks — validated on --bg */
+	--bar-gray: #6f6c63;     /* de-emphasis series */
+	--delta-good: #4fae4f;   /* improvement */
+	/* chart chrome */
+	--grid: #262320;
+	--axis: #3a362f;
+	--hairline: rgba(236, 231, 220, 0.10);
+	/* spacing scale */
+	--s-1: 0.5rem;
+	--s-2: 1rem;
+	--s-3: 1.5rem;
+	--s-4: 2.5rem;
+	--s-5: 4rem;
+	--s-6: 6.5rem;
+	--radius: 10px;
+	--measure: 64ch;
+	--font-heading: "Fraunces", Georgia, serif;
+	--font-body: system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+	margin: 0;
+	background: var(--bg);
+	color: var(--ink-2);
+	font-family: var(--font-body);
+	font-size: 1.0625rem;
+	line-height: 1.65;
+	letter-spacing: 0;
+	-webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+	font-family: var(--font-heading);
+	font-weight: 600;
+	letter-spacing: -0.02em;
+	color: var(--ink);
+	line-height: 1.15;
+	margin: 0 0 var(--s-2);
+}
+
+h1 { font-size: clamp(1.75rem, 4vw, 3.25rem); }
+h2 { font-size: clamp(1.4rem, 2.6vw, 2.1rem); }
+h3 { font-size: clamp(1.05rem, 1.6vw, 1.3rem); }
+
+p { margin: 0 0 var(--s-2); }
+
+a { color: var(--accent); text-decoration: none; transition: color 140ms ease; }
+a:hover, a:focus-visible { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
+
+/* ---------- header ---------- */
+
+.site-header {
+	position: sticky;
+	top: 0;
+	z-index: 10;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: var(--s-2);
+	padding: var(--s-2) clamp(1rem, 4vw, 3rem);
+	background: rgba(14, 13, 11, 0.86);
+	backdrop-filter: blur(8px);
+	border-bottom: 1px solid var(--hairline);
+}
+
+.wordmark {
+	font-family: var(--font-heading);
+	font-weight: 600;
+	letter-spacing: -0.02em;
+	font-size: 1.1rem;
+	color: var(--ink);
+}
+.wordmark:hover { text-decoration: none; color: var(--accent); }
+
+.site-header nav { display: flex; gap: clamp(0.75rem, 2vw, 1.5rem); }
+.site-header nav a { color: var(--ink-2); font-size: 0.95rem; }
+.site-header nav a:hover { color: var(--accent); text-decoration: none; }
+
+/* ---------- page grid ---------- */
+
+main {
+	display: grid;
+	grid-template-columns: minmax(1rem, 1fr) minmax(0, 62rem) minmax(1rem, 1fr);
+}
+main > * { grid-column: 2; }
+
+/* ---------- hero ---------- */
+
+.hero { padding: var(--s-6) 0 var(--s-5); }
+
+.eyebrow {
+	color: var(--muted);
+	font-size: 0.85rem;
+	text-transform: uppercase;
+	letter-spacing: 0.12em;
+	margin-bottom: var(--s-2);
+}
+
+.hero h1 { max-width: 22ch; }
+
+.lede { max-width: var(--measure); font-size: clamp(1.05rem, 1.5vw, 1.2rem); }
+
+.kpi-row {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: var(--s-2);
+	margin: var(--s-4) 0;
+}
+
+.stat {
+	display: flex;
+	flex-direction: column;
+	gap: 0.3rem;
+	padding: var(--s-3);
+	background: var(--surface);
+	border: 1px solid var(--hairline);
+	border-radius: var(--radius);
+}
+
+.stat-label { color: var(--muted); font-size: 0.85rem; }
+
+.stat-value {
+	font-family: var(--font-body);
+	font-weight: 600;
+	font-size: clamp(2.1rem, 3.4vw, 2.9rem);
+	line-height: 1.05;
+	color: var(--ink);
+}
+.stat-value .star { color: var(--accent); font-size: 0.75em; vertical-align: 0.1em; }
+
+.stat-sub { color: var(--ink-2); font-size: 0.9rem; }
+
+.actions { display: flex; flex-wrap: wrap; gap: var(--s-1); }
+
+.button {
+	display: inline-block;
+	padding: 0.6rem 1.2rem;
+	border: 1px solid var(--hairline);
+	border-radius: 999px;
+	color: var(--ink);
+	font-size: 0.95rem;
+	transition: border-color 140ms ease, background 140ms ease, color 140ms ease;
+}
+.button:hover, .button:focus-visible {
+	border-color: var(--accent);
+	color: var(--accent);
+	text-decoration: none;
+}
+.button.primary {
+	background: var(--accent);
+	border-color: var(--accent);
+	color: var(--bg);
+	font-weight: 600;
+}
+.button.primary:hover, .button.primary:focus-visible {
+	background: var(--ink);
+	border-color: var(--ink);
+	color: var(--bg);
+}
+
+/* ---------- sections ---------- */
+
+.section { padding: var(--s-5) 0; border-top: 1px solid var(--hairline); }
+.section-note { max-width: var(--measure); }
+
+/* ---------- chart ---------- */
+
+.chart-card {
+	margin: var(--s-3) 0 0;
+	padding: var(--s-3);
+	background: var(--surface);
+	border: 1px solid var(--hairline);
+	border-radius: var(--radius);
+	overflow-x: auto;
+}
+
+.chart-card figcaption { margin-bottom: var(--s-2); }
+.chart-card figcaption strong { color: var(--ink); font-weight: 600; }
+.chart-sub { display: block; color: var(--muted); font-size: 0.85rem; margin-top: 0.2rem; }
+
+.chart-card svg { width: 100%; height: auto; min-width: 560px; display: block; }
+
+.chart-card .grid { stroke: var(--grid); stroke-width: 1; }
+.chart-card .axis { stroke: var(--axis); stroke-width: 1; }
+.bar-baseline { fill: var(--bar-gray); }
+.bar-accent { fill: var(--accent-mark); }
+
+.chart-card text {
+	font-family: var(--font-body);
+	font-size: 13px;
+	fill: var(--ink-2);
+}
+.chart-card .cat { text-anchor: end; fill: var(--ink-2); }
+.chart-card .bar-value { fill: var(--ink); font-weight: 600; font-variant-numeric: tabular-nums; }
+.chart-card .delta { fill: var(--delta-good); font-weight: 600; }
+.chart-card .tick { text-anchor: middle; fill: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+.chart-card .axis-name { text-anchor: end; }
+
+.chart-table { margin-top: var(--s-2); font-size: 0.9rem; }
+.chart-table summary { color: var(--muted); cursor: pointer; }
+.chart-table table { border-collapse: collapse; margin-top: var(--s-1); }
+.chart-table th, .chart-table td {
+	text-align: left;
+	padding: 0.4rem 1.25rem 0.4rem 0;
+	border-bottom: 1px solid var(--hairline);
+	font-variant-numeric: tabular-nums;
+}
+.chart-table th { color: var(--muted); font-weight: 500; }
+
+/* ---------- projects: bento ---------- */
+
+.bento {
+	display: grid;
+	grid-template-columns: repeat(6, 1fr);
+	gap: var(--s-2);
+	margin-top: var(--s-3);
+}
+
+.cell {
+	grid-column: span 2;
+	display: flex;
+	flex-direction: column;
+	padding: var(--s-3);
+	background: var(--surface);
+	border: 1px solid var(--hairline);
+	border-radius: var(--radius);
+	transition: border-color 140ms ease, transform 140ms ease;
+}
+.cell:hover { border-color: rgba(217, 169, 78, 0.45); }
+
+.cell-lg { grid-column: span 4; grid-row: span 2; background: var(--surface-2); }
+.cell-wide { grid-column: span 4; }
+
+.cell-tag {
+	color: var(--accent);
+	font-size: 0.78rem;
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+	margin-bottom: var(--s-1);
+}
+
+.cell p { font-size: 0.98rem; }
+
+.chips {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--s-1);
+	list-style: none;
+	padding: 0;
+	margin: 0 0 var(--s-2);
+}
+.chips li {
+	padding: 0.25rem 0.7rem;
+	border: 1px solid var(--hairline);
+	border-radius: 999px;
+	font-size: 0.85rem;
+	color: var(--ink);
+	font-variant-numeric: tabular-nums;
+}
+
+.cell-meta { color: var(--muted); font-size: 0.85rem; margin: auto 0 0; }
+
+.text-link { font-size: 0.95rem; margin-top: auto; }
+
+/* ---------- skills ---------- */
+
+.skills-table { margin-top: var(--s-3); border-top: 1px solid var(--hairline); }
+
+.skills-row {
+	display: grid;
+	grid-template-columns: 11rem 1fr;
+	gap: var(--s-2);
+	padding: var(--s-2) 0;
+	border-bottom: 1px solid var(--hairline);
+}
+
+.skills-group { color: var(--ink); font-weight: 600; font-size: 0.95rem; }
+
+/* ---------- timeline ---------- */
+
+.timeline {
+	list-style: none;
+	margin: var(--s-3) 0 0;
+	padding: 0 0 0 1.5rem;
+	border-left: 1px solid var(--axis);
+	display: grid;
+	gap: var(--s-3);
+}
+
+.timeline li { position: relative; max-width: var(--measure); }
+.timeline li::before {
+	content: "";
+	position: absolute;
+	left: calc(-1.5rem - 5px);
+	top: 0.5em;
+	width: 9px;
+	height: 9px;
+	border-radius: 50%;
+	background: var(--accent-mark);
+}
+.timeline h3 { margin-bottom: 0.3rem; }
+.timeline p { margin: 0; font-size: 0.98rem; }
+
+/* ---------- contact ---------- */
+
+.contact-grid {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: var(--s-3);
+	margin-top: var(--s-3);
+}
+.contact-grid h3 { font-size: 0.95rem; margin-bottom: 0.3rem; }
+.contact-grid p { font-size: 0.95rem; margin: 0; }
+
+/* ---------- footer ---------- */
+
+.site-footer {
+	border-top: 1px solid var(--hairline);
+	padding: var(--s-3) clamp(1rem, 4vw, 3rem);
+	color: var(--muted);
+	font-size: 0.85rem;
+}
+.site-footer p { margin: 0; }
+
+/* ---------- responsive ---------- */
+
+@media (max-width: 860px) {
+	.kpi-row { grid-template-columns: 1fr; }
+	.cell, .cell-lg, .cell-wide { grid-column: span 6; grid-row: auto; }
+	.skills-row { grid-template-columns: 1fr; gap: 0.25rem; }
+	.contact-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 480px) {
+	.contact-grid { grid-template-columns: 1fr; }
+	.site-header nav a { font-size: 0.85rem; }
+}
+
+/* ---------- motion ----------
+   .js-anim is added by site.js before first paint (and only when the user
+   does NOT prefer reduced motion); GSAP then animates to the final state.
+   Without JS, without GSAP, or with reduced motion, everything renders in
+   its final state. */
+
+.js-anim [data-hero] { opacity: 0; transform: translateY(22px); }
+
+@media (prefers-reduced-motion: reduce) {
+	html { scroll-behavior: auto; }
+	.js-anim [data-hero] { opacity: 1; transform: none; }
+	*, *::before, *::after { transition-duration: 0.01ms !important; }
+}
